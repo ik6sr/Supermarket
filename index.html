@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تأكيد الطلب عبر واتساب</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        #orderCode {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>تأكيد الطلب عبر واتساب</h2>
+    <button id="confirmOrder">تأكيد الطلب</button>
+    <p id="orderCode"></p>
+
+    <script>
+        document.getElementById("confirmOrder").addEventListener("click", function() {
+            // توليد كود فريد للطلب
+            let orderCode = "ORD-" + Math.floor(100000 + Math.random() * 900000);
+
+            // رقم واتساب الخاص بتأكيد الطلبات
+            let whatsappNumber = "+964706947015";
+
+            // رسالة الطلب
+            let message = تم استلام طلب جديد ✅\n🔹 كود الطلب: ${orderCode}\n📍 المرجو إظهاره عند الاستلام.;
+
+            // تحويل النص إلى رابط واتساب
+            let whatsappURL = https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)};
+
+            // فتح رابط واتساب
+            window.open(whatsappURL, "_blank");
+
+            // عرض الكود للزبون
+            document.getElementById("orderCode").innerText = 📌 كود طلبك: ${orderCode};
+        });
+    </script>
+
+</body>
+</html>
